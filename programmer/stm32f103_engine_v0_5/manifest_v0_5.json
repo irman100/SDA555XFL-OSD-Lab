@@ -1,0 +1,28 @@
+{
+  "version": "0.5",
+  "shipped_destructive_enable": 0,
+  "id": "BF D5",
+  "unlock_addresses": [
+    "0x5555",
+    "0x2AAA"
+  ],
+  "program_sequence": [
+    "5555:AA",
+    "2AAA:55",
+    "5555:A0",
+    "ADDR:DATA"
+  ],
+  "erase_sequence": [
+    "5555:AA",
+    "2AAA:55",
+    "5555:80",
+    "5555:AA",
+    "2AAA:55",
+    "5555:10"
+  ],
+  "original_sha256": "6aa37c6d74d115eefdb52db8792b929b4104c59733485fc2c27a3402c2fce816",
+  "target_vcs_sha256": "8527dd1f0fd8b5fbb1539d4cae1e6a9133a6d37853f47aef212054cf24b7748b",
+  "recovery_sha256": "6aa37c6d74d115eefdb52db8792b929b4104c59733485fc2c27a3402c2fce816",
+  "simulation_result": "PASS",
+  "audit_result": "PASS"
+}

@@ -1,0 +1,8 @@
+﻿region,start,end,size,meaning
+Pointer array 0,0xC400,0xC405,6,display / CLUT / GDW pointers
+GDW,0xC406,0xC40F,10,factory GDW
+Programmable CLUT backing area,0xC410,0xC46F,96,not required for hardwired CLUT 0..15
+Pointer array 1,0xC470,0xC475,6,DRC1 / DRC2 / DRC4 pointers
+1-bit DRCS active range,0xC476,0xCA15,1440,96 chars × 15 bytes
+4-bit DRCS active logical range,0xCA16,0xEF95,9600,160 chars × 60 bytes; 2-bit range empty
+Display RAM,0xF448,0xFFFF,3000,40×25×3 bytes

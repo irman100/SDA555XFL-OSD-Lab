@@ -1,0 +1,27 @@
+{
+  "version": "0.4",
+  "destructive_writes_enabled": false,
+  "proven_flash_id": "BF D5",
+  "proven_original": {
+    "size": 131072,
+    "crc32": "B3680360",
+    "sha256": "6aa37c6d74d115eefdb52db8792b929b4104c59733485fc2c27a3402c2fce816",
+    "non_ff_bytes": 111410
+  },
+  "separate_sync": {
+    "crc32": "EB676CE4",
+    "sha256": "990eea130ef4b679940a3c9f71d44f7d52cc87aff1ad9e812cf7145ba8479392",
+    "unchanged": 19663,
+    "direct_program_1_to_0": 38,
+    "requires_erase_0_to_1": 111371,
+    "bytes_to_program_after_full_erase": 310
+  },
+  "vcs": {
+    "crc32": "E0123039",
+    "sha256": "8527dd1f0fd8b5fbb1539d4cae1e6a9133a6d37853f47aef212054cf24b7748b",
+    "unchanged": 19663,
+    "direct_program_1_to_0": 38,
+    "requires_erase_0_to_1": 111371,
+    "bytes_to_program_after_full_erase": 310
+  }
+}

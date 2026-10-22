@@ -1,0 +1,14 @@
+﻿stage,SFR,address,value/mask,purpose,confidence
+reset-default,PCLK1:PCLK0,DA:DB,01:48,~12.0117 MHz pixel clock,high/documented
+reset-default,VLR1:VLR0,EE:EF,02:71,625 lines,high/documented
+reset-default,HPR1:HPR0,F1:F2,08:55,~63.99 us H period,high/documented
+factory,POINTARRAY0,F5:F6,04:00,pointer array 0 -> C400,high/dump
+factory,POINTARRAY1,F3:F4,04:70,pointer array 1 -> C470,high/dump
+factory,SCR1,E1,C0,RGB DAC/factory sync config,high/dump
+factory,SDH0,E6,BF,horizontal display delay 191 px,high/dump
+factory,SDV0,E4,28,vertical display delay 40 lines,high/dump
+factory,HCR1,E7,14,horizontal clamp end,high/dump
+factory,OSD_CTRL,F8,0D,enable display / load GDW,high/dump+manual
+standalone candidate,CSCR0,DD,OR 0C,P4.7 alternate + VS output,high/manual
+standalone candidate,SCR0,E2,01,"master, separate H/V, interlace",high/manual
+standalone candidate,SCR0,E2,03,master + VCS composite candidate,medium-high/software; pin needs bench verify

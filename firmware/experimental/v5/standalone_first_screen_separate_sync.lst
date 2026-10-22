@@ -1,0 +1,190 @@
+SDA555XFL v5 separate sync
+
+0000: 75 A8 00           MOV IE,#00h
+0003: 75 81 B6           MOV SP,#B6h
+0006: 75 D8 00           MOV PSAVE,#00h
+0009: 75 D7 00           MOV PSAVEX,#00h
+000C: 75 E2 00           MOV SCR0,#00h
+000F: 75 DA 01           MOV PCLK1,#01h
+0012: 75 DB 48           MOV PCLK0,#48h
+0015: 75 EE 02           MOV VLR1,#02h
+0018: 75 EF 71           MOV VLR0,#71h
+001B: 75 F1 08           MOV HPR1,#08h
+001E: 75 F2 55           MOV HPR0,#55h
+0021: 75 F6 00           MOV POINT0_L,#00h
+0024: 75 F5 04           MOV POINT0_H,#04h
+0027: 75 F4 70           MOV POINT1_L,#70h
+002A: 75 F3 04           MOV POINT1_H,#04h
+002D: 90 C4 00           MOV DPTR,#C400h
+0030: 74 48              MOV A,#48h
+0032: F0                 MOVX @DPTR,A
+0033: A3                 INC DPTR
+0034: 74 F4              MOV A,#F4h
+0036: F0                 MOVX @DPTR,A
+0037: A3                 INC DPTR
+0038: 74 10              MOV A,#10h
+003A: F0                 MOVX @DPTR,A
+003B: A3                 INC DPTR
+003C: 74 C4              MOV A,#C4h
+003E: F0                 MOVX @DPTR,A
+003F: A3                 INC DPTR
+0040: 74 06              MOV A,#06h
+0042: F0                 MOVX @DPTR,A
+0043: A3                 INC DPTR
+0044: 74 C4              MOV A,#C4h
+0046: F0                 MOVX @DPTR,A
+0047: A3                 INC DPTR
+0048: 74 07              MOV A,#07h
+004A: F0                 MOVX @DPTR,A
+004B: A3                 INC DPTR
+004C: 74 00              MOV A,#00h
+004E: F0                 MOVX @DPTR,A
+004F: A3                 INC DPTR
+0050: 74 00              MOV A,#00h
+0052: F0                 MOVX @DPTR,A
+0053: A3                 INC DPTR
+0054: 74 00              MOV A,#00h
+0056: F0                 MOVX @DPTR,A
+0057: A3                 INC DPTR
+0058: 74 00              MOV A,#00h
+005A: F0                 MOVX @DPTR,A
+005B: A3                 INC DPTR
+005C: 74 58              MOV A,#58h
+005E: F0                 MOVX @DPTR,A
+005F: A3                 INC DPTR
+0060: 74 09              MOV A,#09h
+0062: F0                 MOVX @DPTR,A
+0063: A3                 INC DPTR
+0064: 74 66              MOV A,#66h
+0066: F0                 MOVX @DPTR,A
+0067: A3                 INC DPTR
+0068: 74 41              MOV A,#41h
+006A: F0                 MOVX @DPTR,A
+006B: A3                 INC DPTR
+006C: 74 08              MOV A,#08h
+006E: F0                 MOVX @DPTR,A
+006F: 90 C4 70           MOV DPTR,#C470h
+0072: 74 76              MOV A,#76h
+0074: F0                 MOVX @DPTR,A
+0075: A3                 INC DPTR
+0076: 74 C4              MOV A,#C4h
+0078: F0                 MOVX @DPTR,A
+0079: A3                 INC DPTR
+007A: 74 50              MOV A,#50h
+007C: F0                 MOVX @DPTR,A
+007D: A3                 INC DPTR
+007E: 74 CC              MOV A,#CCh
+0080: F0                 MOVX @DPTR,A
+0081: A3                 INC DPTR
+0082: 74 16              MOV A,#16h
+0084: F0                 MOVX @DPTR,A
+0085: A3                 INC DPTR
+0086: 74 CA              MOV A,#CAh
+0088: F0                 MOVX @DPTR,A
+0089: 90 C4 76           MOV DPTR,#C476h
+008C: 74 FF              MOV A,#FFh
+008E: F0                 MOVX @DPTR,A
+008F: A3                 INC DPTR
+0090: 74 F8              MOV A,#F8h
+0092: F0                 MOVX @DPTR,A
+0093: A3                 INC DPTR
+0094: 74 01              MOV A,#01h
+0096: F0                 MOVX @DPTR,A
+0097: A3                 INC DPTR
+0098: 74 A0              MOV A,#A0h
+009A: F0                 MOVX @DPTR,A
+009B: A3                 INC DPTR
+009C: 74 59              MOV A,#59h
+009E: F0                 MOVX @DPTR,A
+009F: A3                 INC DPTR
+00A0: 74 09              MOV A,#09h
+00A2: F0                 MOVX @DPTR,A
+00A3: A3                 INC DPTR
+00A4: 74 89              MOV A,#89h
+00A6: F0                 MOVX @DPTR,A
+00A7: A3                 INC DPTR
+00A8: 74 18              MOV A,#18h
+00AA: F0                 MOVX @DPTR,A
+00AB: A3                 INC DPTR
+00AC: 74 61              MOV A,#61h
+00AE: F0                 MOVX @DPTR,A
+00AF: A3                 INC DPTR
+00B0: 74 89              MOV A,#89h
+00B2: F0                 MOVX @DPTR,A
+00B3: A3                 INC DPTR
+00B4: 74 19              MOV A,#19h
+00B6: F0                 MOVX @DPTR,A
+00B7: A3                 INC DPTR
+00B8: 74 09              MOV A,#09h
+00BA: F0                 MOVX @DPTR,A
+00BB: A3                 INC DPTR
+00BC: 74 A0              MOV A,#A0h
+00BE: F0                 MOVX @DPTR,A
+00BF: A3                 INC DPTR
+00C0: 74 5F              MOV A,#5Fh
+00C2: F0                 MOVX @DPTR,A
+00C3: A3                 INC DPTR
+00C4: 74 FF              MOV A,#FFh
+00C6: F0                 MOVX @DPTR,A
+00C7: 90 F4 48           MOV DPTR,#F448h
+00CA: 7F 04              MOV R7,#04h
+00CC: 7E FA              MOV R6,#FAh
+00CE: 74 00              MOV A,#00h
+00D0: F0                 MOVX @DPTR,A
+00D1: A3                 INC DPTR
+00D2: 74 03              MOV A,#03h
+00D4: F0                 MOVX @DPTR,A
+00D5: A3                 INC DPTR
+00D6: 74 00              MOV A,#00h
+00D8: F0                 MOVX @DPTR,A
+00D9: A3                 INC DPTR
+00DA: DE F2              DJNZ R6,CLEAR_INNER
+00DC: DF EE              DJNZ R7,CLEAR_OUTER
+00DE: 90 F9 28           MOV DPTR,#F928h
+00E1: 7E 08              MOV R6,#08h
+00E3: 74 00              MOV A,#00h
+00E5: F0                 MOVX @DPTR,A
+00E6: A3                 INC DPTR
+00E7: 74 03              MOV A,#03h
+00E9: F0                 MOVX @DPTR,A
+00EA: A3                 INC DPTR
+00EB: 74 1C              MOV A,#1Ch
+00ED: F0                 MOVX @DPTR,A
+00EE: A3                 INC DPTR
+00EF: DE F2              DJNZ R6,ROW_F928
+00F1: 90 F9 A0           MOV DPTR,#F9A0h
+00F4: 7E 08              MOV R6,#08h
+00F6: 74 00              MOV A,#00h
+00F8: F0                 MOVX @DPTR,A
+00F9: A3                 INC DPTR
+00FA: 74 03              MOV A,#03h
+00FC: F0                 MOVX @DPTR,A
+00FD: A3                 INC DPTR
+00FE: 74 1C              MOV A,#1Ch
+0100: F0                 MOVX @DPTR,A
+0101: A3                 INC DPTR
+0102: DE F2              DJNZ R6,ROW_F9A0
+0104: 90 FA 18           MOV DPTR,#FA18h
+0107: 7E 08              MOV R6,#08h
+0109: 74 00              MOV A,#00h
+010B: F0                 MOVX @DPTR,A
+010C: A3                 INC DPTR
+010D: 74 03              MOV A,#03h
+010F: F0                 MOVX @DPTR,A
+0110: A3                 INC DPTR
+0111: 74 1C              MOV A,#1Ch
+0113: F0                 MOVX @DPTR,A
+0114: A3                 INC DPTR
+0115: DE F2              DJNZ R6,ROW_FA18
+0117: 75 E1 C0           MOV SCR1,#C0h
+011A: 75 E3 00           MOV SDV1,#00h
+011D: 75 E4 28           MOV SDV0,#28h
+0120: 75 E5 00           MOV SDH1,#00h
+0123: 75 E6 BF           MOV SDH0,#BFh
+0126: 75 E7 14           MOV HCR1,#14h
+0129: D2 B5              SETB P3.5
+012B: D2 EF              SETB P4.7
+012D: 75 DD 0C           MOV CSCR0,#0Ch
+0130: 75 F8 0D           MOV OSD_CTRL,#0Dh
+0133: 75 E2 01           MOV SCR0,#01h
+0136: 80 FE              SJMP HANG

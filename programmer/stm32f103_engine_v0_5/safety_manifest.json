@@ -1,0 +1,32 @@
+{
+  "version": "0.3",
+  "purpose": "non-destructive JEDEC software-ID probe",
+  "allowed_command_data": [
+    "0xAA",
+    "0x55",
+    "0x90",
+    "0xF0"
+  ],
+  "destructive_command_data_not_implemented": [
+    "0xA0",
+    "0x80",
+    "0x10",
+    "0x30"
+  ],
+  "probe_modes": {
+    "5555": {
+      "unlock1": "0x5555",
+      "unlock2": "0x2AAA"
+    },
+    "0555": {
+      "unlock1": "0x0555",
+      "unlock2": "0x02AA"
+    }
+  },
+  "known_ids": {
+    "BF D5": "SST39LF/VF010",
+    "1F 17": "Atmel AT49F/LV/BV010",
+    "01 6E": "AMD Am29LV010B",
+    "20 23": "ST M29W010B"
+  }
+}

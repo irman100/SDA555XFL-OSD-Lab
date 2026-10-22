@@ -1,0 +1,17 @@
+{
+  "result": "PASS",
+  "checks": {
+    "compile_lock_default_in_source": true,
+    "safe_platformio_flag": true,
+    "proven_id_BF_D5": true,
+    "program_sequence_present": true,
+    "erase_sequence_present": true,
+    "dq7_dq6_polling_present": true,
+    "full_ff_verify_present": true,
+    "full_crc_verify_present": true,
+    "binary_stream_drain_on_failure": true,
+    "magic_erase_interlock": true,
+    "magic_program_interlock": true,
+    "generic_write_not_exposed": true
+  }
+}

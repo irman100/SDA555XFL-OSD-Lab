@@ -1,0 +1,25 @@
+{
+  "result": "PASS",
+  "baseline": {
+    "crc32": "B3680360",
+    "sha256": "6aa37c6d74d115eefdb52db8792b929b4104c59733485fc2c27a3402c2fce816"
+  },
+  "target": {
+    "crc32": "E0123039",
+    "sha256": "8527dd1f0fd8b5fbb1539d4cae1e6a9133a6d37853f47aef212054cf24b7748b",
+    "programmed_non_ff_bytes": 310
+  },
+  "erased_state": {
+    "crc32_first": "154803CC",
+    "sha256_first": "b5a41c3758763bbec72769fab4a2533bf2db0b6312d93d25a695f9e4b9e02260",
+    "crc32_second": "154803CC"
+  },
+  "recovery": {
+    "crc32": "B3680360",
+    "sha256": "6aa37c6d74d115eefdb52db8792b929b4104c59733485fc2c27a3402c2fce816",
+    "programmed_non_ff_bytes": 111410
+  },
+  "negative_0_to_1_test": "PASS: illegal 0->1 rejected",
+  "erase_operations": 2,
+  "total_program_operations": 111720
+}

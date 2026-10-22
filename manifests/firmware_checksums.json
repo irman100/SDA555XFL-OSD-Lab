@@ -1,0 +1,63 @@
+{
+  "project": "SDA555XFL-OSD-Lab",
+  "generated_utc": "2026-10-22",
+  "notes": "Factory recovery image intentionally excluded. Verify these hashes before any programming operation.",
+  "images": [
+    {
+      "path": "firmware/experimental/v5/standalone_first_screen_separate_sync_128k.bin",
+      "size_bytes": 131072,
+      "crc32": "EB676CE4",
+      "sha256": "990eea130ef4b679940a3c9f71d44f7d52cc87aff1ad9e812cf7145ba8479392",
+      "status": "experimental; not fully validated on target hardware"
+    },
+    {
+      "path": "firmware/experimental/v5/standalone_first_screen_separate_sync_128k.hex",
+      "size_bytes": 360492,
+      "crc32": "0765740B",
+      "sha256": "e44ddb0a0d854b552c7a877fe8c4db68a9dfca269fd63cc24572e2b3b6d2e662",
+      "status": "experimental; not fully validated on target hardware"
+    },
+    {
+      "path": "firmware/experimental/v5/standalone_first_screen_separate_sync_code.bin",
+      "size_bytes": 312,
+      "crc32": "E6D03EB0",
+      "sha256": "e313f435e033563e3ba76eaf693638747de0dc15097f8e8a54e1209a881e953a",
+      "status": "experimental; not fully validated on target hardware"
+    },
+    {
+      "path": "firmware/experimental/v5/standalone_first_screen_vcs_128k.bin",
+      "size_bytes": 131072,
+      "crc32": "E0123039",
+      "sha256": "8527dd1f0fd8b5fbb1539d4cae1e6a9133a6d37853f47aef212054cf24b7748b",
+      "status": "experimental; not fully validated on target hardware"
+    },
+    {
+      "path": "firmware/experimental/v5/standalone_first_screen_vcs_128k.hex",
+      "size_bytes": 360492,
+      "crc32": "B89D905B",
+      "sha256": "8096ed431f3bb454534161110b380471d19e8e725a1bc85836e6476bbb66c665",
+      "status": "experimental; not fully validated on target hardware"
+    },
+    {
+      "path": "firmware/experimental/v5/standalone_first_screen_vcs_code.bin",
+      "size_bytes": 312,
+      "crc32": "E554EADE",
+      "sha256": "6be4e087fa6765ffc9ca466cf49cdb693fdb47b294a021643f8fea43679e4fc4",
+      "status": "experimental; not fully validated on target hardware"
+    },
+    {
+      "path": "firmware/experimental/v6_no_shadow/standalone_first_screen_separate_sync_no_shadow_128k.bin",
+      "size_bytes": 131072,
+      "crc32": "9EEDE6E3",
+      "sha256": "4d92b57acde7420331b0908d6463765490760986bc72671821abdea62fe7ff7d",
+      "status": "experimental; not fully validated on target hardware"
+    },
+    {
+      "path": "firmware/experimental/v6_no_shadow/standalone_first_screen_vcs_no_shadow_128k.bin",
+      "size_bytes": 131072,
+      "crc32": "9598BA3E",
+      "sha256": "37b5690da3e15233ec841ed12ff7df4b7160b46e66d0f6d2aada6d5a30a20962",
+      "status": "experimental; not fully validated on target hardware"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+# Local Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local logs / generated reports
+*.log
+*.tmp
+*.bak
+backup_before_restore_*.bin
+backup_live_original_*.bin
+
+# Original factory firmware / recovery images must stay outside this repo
+RECOVERY_original_128k.bin
+original_1.bin
+backup_live_original_B3680360.bin
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

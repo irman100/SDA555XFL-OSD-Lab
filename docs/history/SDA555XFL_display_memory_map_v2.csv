@@ -1,0 +1,9 @@
+﻿region,start,end,size_bytes,note
+XRAM pointer array 0,0xC400,0xC405,6,"3 pointers: display, CLUT, GDW/cursor"
+GDW,0xC406,0xC40F,10,Global Display Word
+CLUT,0xC410,0xC46F,96,48 x 2-byte programmable CLUT contents
+XRAM pointer array 1,0xC470,0xC475,6,Pointers to 1/2/4-bit DRCS
+1-bit DRCS,0xC476,0xCA15,1440,Factory layout inferred from pointers
+4-bit DRCS,0xCA16,0xCC4F,570,Factory layout inferred from pointers
+2-bit DRCS / other display work area,0xCC50,0xF447,10232,Factory layout inferred from pointers
+Character display RAM,0xF448,0xFFFF,3000,25 rows x 40 cols x 3 bytes
