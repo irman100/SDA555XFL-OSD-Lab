@@ -1,25 +1,36 @@
 # SDA555XFL Arcade v0.13 — Tetris Full-Cell (P3.3)
 
-This release is based on the user-supplied `sda555xfl_arcade_v0_12_P33_128k.bin`, not reconstructed from an absent source archive.
+**Это новая 128-КиБ прошивка, полученная прямой правкой загруженной пользователем Arcade v0.12 P3.3.** Это не набор тайлов вместо прошивки.
 
-## Firmware artifact
+## Что исправлено
 
-`SDA555XFL_Arcade_v0_13_P33_fullcell_firmware.zip` contains the patched 128-KiB BIN, the original input BIN, the exact 420-byte DRCS payload, the reproducible patch script, source graphics, SHA-256 sums, and a verification report.
+Существующая прошивка уже содержала Pong, Tetris, загрузчик, управление с ИК-пульта и загрузку семи Tetris DRCS-глифов. У каждого старого глифа было 40 пикселей с индексом `0` (чёрная рамка/отступ) внутри ячейки 12×10. Эти семь глифов заменены полноразмерными: цветная лицевая поверхность, светлый блик и тёмная цветная фаска доходят до границ растра, индекс `0` внутри клетки больше не используется.
 
-- Output file: `sda555xfl_arcade_v0_13_P33_fullcell_128k.bin`
-- Size: 131072 bytes
+Правка выполнена прямо в исходном BIN: изменены только immediate-байты существующих 420 команд загрузки DRCS в XRAM. Опкоды, адреса, игровой цикл, таблицы фигур, Pong, загрузчик, настройки и управление не менялись. Это сохраняет размер и все адреса кода.
+
+## Готовая прошивка
+
+В этой GitHub-ветке находится сжатый бинарник:
+[`sda555xfl_arcade_v0_13_P33_fullcell_128k_firmware_only.zip`](./sda555xfl_arcade_v0_13_P33_fullcell_128k_firmware_only.zip)
+
+После распаковки основной файл называется `sda555xfl_arcade_v0_13_P33_fullcell_128k.bin`.
+
+- Размер BIN: 131072 байта (128 КиБ)
 - CRC32: `69879A1A`
-- SHA-256: `81a3973a5eb5b1cdcd8032e90fb285f4855eb7414738f0fdfbe8e8e6e5ccaa5b`
-- Archive SHA-256: `0918f69e3a1dd65d55431da1777eb690afb2a51907807a3b3845458547af512c`
+- SHA-256 BIN: `81a3973a5eb5b1cdcd8032e90fb285f4855eb7414738f0fdfbe8e8e6e5ccaa5b`
+- SHA-256 полного локального пакета с исходником, входной BIN, графикой и отчётом: `0918f69e3a1dd65d55431da1777eb690afb2a51907807a3b3845458547af512c`
 
-## Patch scope
+Полный пакет с воспроизводимым патчером, входной прошивкой, DRCS-данными, атласом, манифестом, отчётом и суммами доступен как локальное вложение в чате; он не подменяется этим firmware-only ZIP.
 
-The image already contained seven Tetris DRCS glyphs as 420 immediate operands in the startup upload stream. The release replaces those operands only, removing index-0 pixels from the 12×10 cells. The instruction opcodes and all non-operand bytes are preserved. Pong, the launcher, menus, controls, and game logic are byte-identical to the input.
+## Проверки
 
-The existing per-piece color-index convention is kept: highlight 1, face 2–8, shade 9–15. No CLUT or display-word code is changed.
+- Вход и выход — ровно 131072 байта.
+- Все 420 immediate-операндов совпадают с DRCS payload после патча.
+- Фактически изменились 224 значения байтов; все изменения находятся только в immediate-операндах существующих команд загрузки.
+- Все остальные байты исходной прошивки побайтно идентичны.
+- До исправления: 40 нулевых пикселей на каждый глиф; после исправления: 0.
+- Повторная сборка патчером совпала с готовым BIN побайтно.
 
-## Validation and limits
+## Ограничения
 
-The patcher checks the input SHA-256, the 420-byte payload, each store instruction, readback, exact image size, and byte equality outside the immediate operands. The output was regenerated and compared byte-for-byte with the release BIN.
-
-No external Flash was written and no physical-TV test was performed. P3.2 was not built because only the P3.3 image was provided. Before any hardware write, verify and preserve a complete backup of the current Flash.
+Это P3.3-вариант, потому что пользователь предоставил P3.3 BIN. P3.2 не имитировался и не собирался. Внешняя Flash не записывалась, физический телевизор не тестировался. Перед любой записью сначала сохрани полную резервную копию текущей Flash и проверь её чтение.
