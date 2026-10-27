@@ -1,0 +1,50 @@
+{
+  "release": "SDA555XFL Arcade v0.17 — queue/violet/maxRGB P3.3",
+  "target": {
+    "mcu": "SDA555XFL",
+    "flash_image_bytes": 131072,
+    "profile": "P3.3"
+  },
+  "firmware": {
+    "path": "firmware/sda555xfl_arcade_v0_17_queue_violet_maxrgb_128k.bin",
+    "size_bytes": 131072,
+    "crc32": "16BAB53C",
+    "sha256": "8ff253d6ea5a1ba6fd0be6b8c64f95ee8576d5c998845211bcc571f1646afe66"
+  },
+  "source_firmware": {
+    "version": "Arcade v0.12 P3.3",
+    "size_bytes": 131072,
+    "crc32": "39C1BD4B",
+    "sha256": "09f59d40672278b5ccd56c241f769ed6bf4c55b191a7e18727e63c2ac1065896"
+  },
+  "static_checks": {
+    "output_size": "PASS",
+    "firmware_checksum": "PASS",
+    "zip_integrity": "PASS",
+    "patched_register_bytes": "PASS",
+    "tetromino_edge_reachability_cases": 28,
+    "hard_drop_geometry_cases": 28,
+    "gravity_and_level_cases": 260,
+    "next_piece_queue": {
+      "first_rng_seed": "0xA7",
+      "initial_preview_piece_id": 5,
+      "original_shape_table_reused": true
+    },
+    "background_bevel": "one pixel highlight top/left and one pixel dark violet bottom/right",
+    "rgb_defaults": {
+      "red": 15,
+      "green": 15,
+      "blue": 15,
+      "brightness": 15,
+      "saturation": 15,
+      "gain_volts_peak_to_peak": 1.2
+    },
+    "clut_changed": false
+  },
+  "limits": {
+    "full_8051_runtime_emulation": false,
+    "physical_tv_test": false,
+    "external_flash_programmed": false,
+    "note": "Static host models do not replace testing on the target board. GitHub release branch contains this report and STATUS_RU.md; binary package is attached in the conversation but has not yet been verified as uploaded to GitHub."
+  }
+}
