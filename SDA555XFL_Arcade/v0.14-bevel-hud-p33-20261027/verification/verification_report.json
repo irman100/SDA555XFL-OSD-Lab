@@ -1,0 +1,64 @@
+{
+  "version": "0.14-bevel-hud-p33",
+  "size_bytes": 131072,
+  "source": {
+    "filename": "sda555xfl_arcade_v0_12_P33_128k.bin",
+    "crc32": "39C1BD4B",
+    "sha256": "09f59d40672278b5ccd56c241f769ed6bf4c55b191a7e18727e63c2ac1065896"
+  },
+  "target": {
+    "filename": "sda555xfl_arcade_v0_14_P33_bevel_hud_128k.bin",
+    "crc32": "D97D3C48",
+    "sha256": "5860fe0413973b493d3a6c568a8a193a3bba0956c233f329a0cc00406ac41323"
+  },
+  "drcs": {
+    "piece_glyphs": 7,
+    "piece_bytes": 420,
+    "piece_zero_pixels": 0,
+    "font_glyphs": 59,
+    "panel_glyphs": 10,
+    "extra_payload_bytes": 4140,
+    "extra_upload_instruction_bytes": 16560,
+    "extra_ram_start": "0xCBBA",
+    "total_glyph_slots": 76
+  },
+  "hud": {
+    "code_start": "0x2200",
+    "code_bytes": 1430,
+    "extra_loader_start": "0x3000",
+    "extra_loader_bytes": 16567,
+    "strings_start": "0x9000",
+    "strings_bytes": 196,
+    "live_board_origin": {
+      "row": 4,
+      "column": 16,
+      "height": 20,
+      "width": 10
+    }
+  },
+  "patch": {
+    "total_changed_bytes": 18483,
+    "allowed_patch_byte_count": 18659,
+    "outside_allowed_ranges_changed": 0,
+    "only_drcs_operands_and_declared_hooks_changed": true,
+    "pong_code_unchanged": true,
+    "launcher_code_unchanged": true,
+    "tetris_logic_unchanged_except_board_origin_and_display_calls": true
+  },
+  "validation": {
+    "input_hash_checked": true,
+    "all_injection_ranges_were_ff": true,
+    "original_drcs_store_opcodes_preserved": true,
+    "new_drcs_upload_stream_shape_checked": true,
+    "size_131072": true,
+    "nonpatch_bytes_identical": true,
+    "flash_written": false,
+    "physical_tv_tested": false
+  },
+  "notes": [
+    "The PIECE panel is a decorative T-shape sample, not a dynamic next-piece queue; the legacy game has no next-piece queue.",
+    "The LEVEL 03 panel is visual branding; the existing game does not maintain a dynamic level counter.",
+    "Panel background and 5x7 ASCII lettering are rendered through 4-bit DRCS slots in the existing OSD, not as a bitmap framebuffer.",
+    "No Flash was written; only P3.3 was built because only the P3.3 input BIN was supplied."
+  ]
+}
