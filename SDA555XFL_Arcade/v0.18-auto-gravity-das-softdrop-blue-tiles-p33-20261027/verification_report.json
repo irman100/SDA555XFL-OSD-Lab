@@ -1,0 +1,63 @@
+{
+  "version": "0.18-auto-gravity-das-softdrop-blue-tiles-p33",
+  "source": {
+    "filename": "sda555xfl_arcade_v0_12_P33_128k.bin",
+    "size_bytes": 131072,
+    "crc32": "39C1BD4B",
+    "sha256": "09f59d40672278b5ccd56c241f769ed6bf4c55b191a7e18727e63c2ac1065896"
+  },
+  "target": {
+    "filename": "sda555xfl_arcade_v0_18_auto_gravity_das_softdrop_blue_tiles_128k.bin",
+    "size_bytes": 131072,
+    "crc32": "B0D1942B",
+    "sha256": "30e08a3427c3332fab071eec10539da16a69efae9d857c81e253a129aed380fa"
+  },
+  "timings": {
+    "left_right_immediate_step": true,
+    "left_right_initial_delay_ticks": 10,
+    "left_right_repeat_every_ticks": 3,
+    "estimated_tick_ms_normal_mode": 44.4,
+    "down_immediate_soft_drop_rows": 1,
+    "down_repeat_every_ticks": 2,
+    "gravity_timer_reload_formula": "max(0,18-level)",
+    "actual_gravity_interval_formula": "max(1,19-level)",
+    "level_1_ticks": 18,
+    "level_18_ticks": 1
+  },
+  "graphics": {
+    "background_face_palette_index": 2,
+    "highlight_palette_index": 1,
+    "shade_palette_index": 9,
+    "global_clut_changed": false
+  },
+  "rgb": {
+    "red": 15,
+    "green": 15,
+    "blue": 15,
+    "brightness": 15,
+    "saturation": 15,
+    "gain_volts_peak_to_peak": 1.2
+  },
+  "tests": {
+    "python_compile": "PASS",
+    "build": "PASS",
+    "independent_bin_checksum": "PASS",
+    "full_zip_integrity": "PASS",
+    "firmware_match_inside_zip": "PASS",
+    "geometry_cases": 28,
+    "repeat_simulation": "PASS",
+    "outside_allowed_rom_bytes_changed": 0,
+    "physical_tv_tested": false,
+    "flash_written": false
+  },
+  "artifacts": {
+    "standalone_bin_sha256": "30e08a3427c3332fab071eec10539da16a69efae9d857c81e253a129aed380fa",
+    "full_release_zip_sha256": "464cb9daddd43d0ec1d3ef68521d900330bf027558a4baf112b90acdb52720af",
+    "firmware_only_zip_sha256": "732236d36577633c552347e4a64bb7bf19998a6ab7e46d18495cd588684904cc"
+  },
+  "limitations": [
+    "No complete 8051 runtime emulation.",
+    "No physical TV test.",
+    "No Flash programming."
+  ]
+}
