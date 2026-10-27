@@ -1,0 +1,77 @@
+{
+  "version": "0.19-keyscan-safe-repeat-auto-gravity-p33",
+  "source": {
+    "filename": "sda555xfl_arcade_v0_12_P33_128k.bin",
+    "size_bytes": 131072,
+    "crc32": "39C1BD4B",
+    "sha256": "09f59d40672278b5ccd56c241f769ed6bf4c55b191a7e18727e63c2ac1065896"
+  },
+  "target": {
+    "filename": "sda555xfl_arcade_v0_19_auto_gravity_das_softdrop_blue_tiles_128k.bin",
+    "size_bytes": 131072,
+    "crc32": "3716058D",
+    "sha256": "f41a07533f661f841fce4051393e0b418d14e5065b0d2a71f4d01c654599eb8d"
+  },
+  "fixes": {
+    "keyboard_scanner_ram_collision": "RAM 0x49 removed from gameplay repeat state; key repeat uses 0x39 and 0x3A",
+    "stock_keyboard_scan_block_0x1B70_to_0x1C0F_unchanged": true,
+    "initial_gravity_timer_register": "0x11",
+    "post_spawn_gravity_timer_register": "0x11",
+    "gravity_first_step_tick": 18,
+    "left_right": {
+      "first_step": "immediate",
+      "initial_delay_ticks": 10,
+      "repeat_every_ticks": 3,
+      "held_26_tick_trace": [
+        0,
+        10,
+        13,
+        16,
+        19,
+        22,
+        25
+      ]
+    },
+    "down": {
+      "action": "one-row soft drop",
+      "repeat_every_ticks": 2,
+      "held_12_tick_trace": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "hard_drop": false
+    },
+    "same_key_after_release_rearms_immediately": true
+  },
+  "invariants": {
+    "rom_size_bytes": 131072,
+    "nonpatch_bytes_identical": true,
+    "injection_ranges_were_empty": true,
+    "pong_unchanged": true,
+    "launcher_unchanged": true,
+    "IR_unchanged": true,
+    "wall_reachability_cases": 28,
+    "gravity_levels_tested": 18,
+    "line_counts_tested": 260,
+    "rgb": {
+      "red": 15,
+      "green": 15,
+      "blue": 15,
+      "brightness": 15,
+      "saturation": 15,
+      "gain_volts_peak_to_peak": 1.2
+    },
+    "flash_written": false,
+    "physical_tv_tested": false,
+    "full_8051_runtime_emulation": false
+  },
+  "artifacts": {
+    "firmware_sha256": "f41a07533f661f841fce4051393e0b418d14e5065b0d2a71f4d01c654599eb8d",
+    "full_release_zip_sha256": "590951eba60d386a085635cfea33ef39815018cce4e34a0013380d435bc76f6a",
+    "firmware_only_zip_sha256": "2a2a3ffecf6140d896458f32a799138fc83bcce6e9cbb6319fb7fc00d1541aee"
+  }
+}
