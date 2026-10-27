@@ -1,0 +1,57 @@
+{
+  "schema": "sda555xfl-arcade-firmware-patch-report-v1",
+  "version": "0.13-full-cell-tetris",
+  "source": {
+    "file": "sda555xfl_arcade_v0_12_P33_128k.bin",
+    "size_bytes": 131072,
+    "crc32": "39C1BD4B",
+    "sha256": "09f59d40672278b5ccd56c241f769ed6bf4c55b191a7e18727e63c2ac1065896"
+  },
+  "target": {
+    "file": "sda555xfl_arcade_v0_13_P33_fullcell_128k.bin",
+    "size_bytes": 131072,
+    "crc32": "69879A1A",
+    "sha256": "81a3973a5eb5b1cdcd8032e90fb285f4855eb7414738f0fdfbe8e8e6e5ccaa5b"
+  },
+  "drcs_payload": {
+    "bytes": 420,
+    "crc32": "B210C008",
+    "sha256": "a5a3899e6a6b0592be8a4f7351a0d7b478fd0444925dc112d49b1cd4b23129e7",
+    "glyph_count": 7,
+    "bytes_per_glyph": 60,
+    "dimensions": "12x10"
+  },
+  "patch": {
+    "rom_offset_start": "0x013B",
+    "rom_offset_end_exclusive": "0x07CB",
+    "immediate_operands_replaced": 420,
+    "actual_byte_values_changed": 224,
+    "all_changes_are_immediate_operands": true,
+    "all_non_operand_bytes_identical": true,
+    "instruction_opcodes_preserved": true,
+    "size_preserved": true
+  },
+  "validation": {
+    "input_sha256_matches_expected": true,
+    "drcs_sha256_matches_expected": true,
+    "store_stream_shape_valid": true,
+    "readback_matches_payload": true,
+    "flash_written": false,
+    "physical_tv_tested": false
+  },
+  "scope": {
+    "changed": "Tetris DRCS glyph data only",
+    "tetris_game_logic_changed": false,
+    "pong_logic_changed": false,
+    "launcher_logic_changed": false,
+    "settings_logic_changed": false,
+    "hardware_profile": "P3.3 inherited from input BIN; P3.2 variant not built"
+  },
+  "notes": [
+    "This patches the user-supplied Arcade v0.12 P3.3 binary; it does not reconstruct the firmware from missing source files.",
+    "The patch writes the new seven full-cell glyphs into the existing 420-byte startup upload sequence to XRAM 0xCA16..0xCBB9.",
+    "Each glyph uses the original per-piece palette-index convention (highlight 1, face 2..8, shade 9..15), so no CLUT or CDW logic changed.",
+    "The 420-byte payload contains no pixel index 0, removing the former black border/inset from every Tetris cell.",
+    "No external Flash was written and no physical-TV test was performed."
+  ]
+}
