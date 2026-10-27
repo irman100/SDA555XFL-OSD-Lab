@@ -1,0 +1,29 @@
+{
+  "result": "PASS",
+  "method": "bounded 8051 instruction simulation of the inserted DRCS loader and HUD helpers",
+  "loader": {
+    "entry": "0x3000",
+    "instructions_executed": 12423,
+    "payload_bytes_expected": 4140,
+    "payload_bytes_written_exactly": true,
+    "xram_start": "0xCBBA",
+    "xram_end_exclusive": "0xdbe6",
+    "dptr_restored_to_display_ram": true
+  },
+  "hud": {
+    "entry": "0x2200",
+    "instructions_executed_including_score_renderer": 40640,
+    "display_cells_drawn": 1000,
+    "all_display_cells_have_valid_custom_drcs_codes": true,
+    "registers_R0_to_R7_restored": true,
+    "scratch_3A_restored": true,
+    "ascii_header_mapping": true,
+    "score_166_rendered_as_1_6_6_in_right_panel": true,
+    "lines_32_rendered_as_0_3_2_in_right_panel": true
+  },
+  "limitations": [
+    "The test emulates only the inserted loader/HUD and the patched score renderer.",
+    "The existing screen-clear routine (0x0984) and display-address routine (0x19D4) are deterministic stubs here; their target implementation was inspected separately.",
+    "This does not simulate all gameplay, Pong, IR hardware, the OSD analog output, or the physical TV. No external Flash was written."
+  ]
+}
