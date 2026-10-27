@@ -1,0 +1,40 @@
+{
+  "schema": "sda555xfl-arcade-firmware-release-manifest-v1",
+  "version": "0.13-full-cell-tetris",
+  "target_profile": "P3.3",
+  "firmware": {
+    "file": "sda555xfl_arcade_v0_13_P33_fullcell_128k.bin",
+    "bytes": 131072,
+    "crc32": "69879A1A",
+    "sha256": "81a3973a5eb5b1cdcd8032e90fb285f4855eb7414738f0fdfbe8e8e6e5ccaa5b"
+  },
+  "baseline": {
+    "file": "sda555xfl_arcade_v0_12_P33_128k.bin",
+    "bytes": 131072,
+    "crc32": "39C1BD4B",
+    "sha256": "09f59d40672278b5ccd56c241f769ed6bf4c55b191a7e18727e63c2ac1065896"
+  },
+  "patch": {
+    "rom_offset_start": "0x013B",
+    "rom_offset_end_exclusive": "0x07CB",
+    "upload_stream_bytes": 1680,
+    "immediate_operands_replaced": 420,
+    "actual_byte_values_changed": 224,
+    "all_bytes_outside_operand_positions_identical": true,
+    "game_logic_changed": false,
+    "pong_changed": false,
+    "launcher_changed": false
+  },
+  "drcs": {
+    "file": "tetris_drcs_420.bin",
+    "bytes": 420,
+    "crc32": "B210C008",
+    "sha256": "a5a3899e6a6b0592be8a4f7351a0d7b478fd0444925dc112d49b1cd4b23129e7",
+    "glyphs": 7,
+    "dimensions": "12x10",
+    "zero_pixel_count_after": 0
+  },
+  "physical_flash_written": false,
+  "physical_tv_tested": false,
+  "p32_variant_built": false
+}
