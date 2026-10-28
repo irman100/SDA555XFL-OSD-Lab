@@ -1,0 +1,12 @@
+# v0.21 ROM patch notes
+
+- Offset 0x0947: LCALL 0x0B36 (12 0B 36) -> LCALL 0x9272 (12 92 72).
+- 0x9272 main_key_event_dispatch intercepts only matching key-up codes while RAM[0x39] identifies a held direction; clears RAM[0x39] and RAM[0x3A], returns without entering 0x0B36.
+- Nonmatching keyboard events call original 0x0B36 and return.
+- 0x096F continues to call Tetris frame tick 0x9260.
+- 0x0C3D continues to call Tetris direction dispatcher 0x92B3.
+- Existing key scanner bytes 0x1B70..0x1C17 are byte-identical to input ROM.
+- Release code values are derived from the stock scanner event-construction path: base key code masked to six bits, with bit 6 set for the release-event path.
+- Input base SHA-256: 09f59d40672278b5ccd56c241f769ed6bf4c55b191a7e18727e63c2ac1065896.
+- Target SHA-256: e1968394c4afc2b1027947c258a0dc82f1494529bcd1eb65f11fc5a6cc57b435.
+- Physical flash not written.
