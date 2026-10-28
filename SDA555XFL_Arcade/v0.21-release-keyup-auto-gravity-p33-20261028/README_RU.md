@@ -1,28 +1,9 @@
-# SDA555XFL Arcade v0.21 — Release-Keyup Fix / Auto Gravity / Gray Pongline (P3.3)
+# SUPERSEDED — v0.21 release-keyup experiment
 
-## Исправление залипания после отпускания
+**Do not use this documentation as a firmware specification. It contains an incorrect assumption about IR key-up codes.** The implementation treated values with bit `0x40` set as button-release events. Review of the 14-bit IR command decoding showed that this bit can be part of an extended command and is not a reliable universal key-up marker.
 
-В v0.20 коды отпускания проверялись только внутри Tetris-specific обработчика `0x0C3D`. Однако общий режимный диспетчер `0x0B36` не обязан проводить key-up событие через эту ветку, поэтому latch `RAM[0x39]` мог оставаться установленным, а Tetris продолжал повторять движение даже после физического отпускания кнопки.
+Use the corrected documentation and locally verified release artifacts from [Arcade v0.22](https://github.com/irman100/SDA555XFL-OSD-Lab/tree/release/arcade-v0.22-irwatchdog-autogravity-gray-pongline-p33-20261028/SDA555XFL_Arcade/v0.22-irwatchdog-autogravity-gray-pongline-p33-20261028).
 
-В v0.21 обработка перенесена на реальную верхнюю точку событий клавиатуры:
-- В основном цикле вызов `LCALL 0x0B36` по ROM offset `0x0947` заменён на `LCALL 0x9272` (`main_key_event_dispatch`).
-- Совпадающие коды отпускания перехватываются до общего режимного диспетчера: `0x5E` для ← при latch `0x1E`, `0x5A` для → при latch `0x1A`, `0x5F` для ↓ при latch `0x1F`.
-- При совпадении сразу очищаются `RAM[0x39]` и `RAM[0x3A]`; release событие не передаётся в старую ветку, где оно могло быть проигнорировано.
-- Все остальные события без изменения идут в оригинальный `0x0B36`. Сканер `0x1B70..0x1C17` не менялся.
-- Tetris-specific обработчик и frame timer сохраняют поведение v0.20: первый шаг сразу, ←/→ повтор после 10 игровых тактов, затем раз в 3 такта; ↓ выполняет soft-drop и повторяет раз в 2 такта; автогравитация действует независимо.
+In v0.22, stopping held-key repeat is handled with an inactivity watchdog refreshed by repeated frames of the same IR command. It expires after 8 Tetris game ticks without a matching frame and clears the repeat latch/timer. This is a best-effort solution; actual remote frame cadence still requires testing on the physical board.
 
-## Проверки
-- Build: PASS; Python syntax: PASS; bounded 8051 helper simulation: PASS.
-- BIN: 131072 bytes, CRC32 `5F511561`, SHA-256 `e1968394c4afc2b1027947c258a0dc82f1494529bcd1eb65f11fc5a6cc57b435`.
-- Полный release ZIP SHA-256: `de92893e80ab3487963c260c949df7daae824f7fb39f157751541fb3fdcf5cd9`.
-- Firmware-only ZIP SHA-256: `79183d9aad449aedccf48a0831f26be60347ba6d902f0cfe5a567e417b86eb97`.
-- Source bundle SHA-256: `1841bcc8c850b7b2f2d86fbe6d6c0f9e9029215b9672a1c2f9620bad9694c126`.
-- ZIP integrity: PASS for all three archives; firmware bytes inside archives match standalone BIN.
-- The bounded helper test executes release dispatcher bytecode for left/right/down and confirms only a release matching the currently held key clears latch/timer before `0x0B36`. Unrelated key-up is forwarded to original dispatcher. Tetris auto gravity and repeat tests remain passing. No unexpected modified ROM bytes outside declared patch ranges.
-
-## Ограничения
-- Полный CPU/IR runtime и телевизор не эмулировались. Коды отпускания основаны на штатном scanner code path; после установки следует проверить прекращение автоповтора при отпускании физической клавиши.
-- Flash не записывалась. Перед аппаратной проверкой сохранить полный дамп Flash.
-- Этот BIN предназначен для варианта платы P3.3.
-
-Исходный ROM: `sda555xfl_arcade_v0_12_P33_128k.bin`, SHA-256 `09f59d40672278b5ccd56c241f769ed6bf4c55b191a7e18727e63c2ac1065896`.
+This v0.21 branch contains historical documentation only; no verified v0.21 firmware binary was published. Do not flash a binary based on these v0.21 notes.
