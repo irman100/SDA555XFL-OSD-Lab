@@ -1,0 +1,42 @@
+{
+  "result": "PASS",
+  "method": "Bounded 8051 instruction-level execution of actual emitted v0.22 watchdog, repeat and gravity helper code. Native movement/lock/spawn and IR scanner/device timing are stubbed/not emulated.",
+  "ir_watchdog": {
+    "ram": "0x3B",
+    "timeout_ticks": 8,
+    "matching_frames_refresh_watchdog": true,
+    "matching_frames_do_not_reset_DAS": true,
+    "silent_frames_expire_and_clear_hold": true,
+    "physical_keyup_inferred_from_bit_0x40": false
+  },
+  "key_repeat": {
+    "left_right_initial_delay_ticks": 10,
+    "left_right_repeat_every_ticks": 3,
+    "down_repeat_every_ticks": 2,
+    "stops_after_watchdog_expiry": true,
+    "rearms_on_new_command": true
+  },
+  "gravity": {
+    "level1_ticks": [
+      18,
+      36
+    ],
+    "level18_ticks": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "hooks": {
+    "tetris_loop": "0x096F -> 0x9260",
+    "keyboard": "0x0C3D -> 0x927F"
+  },
+  "hardware_test": false,
+  "limitations": [
+    "No full CPU runtime.",
+    "No actual IR remote cadence measurement.",
+    "Native movement/0x1739 bodies stubbed in helper test.",
+    "No physical TV test; Flash not written."
+  ]
+}
