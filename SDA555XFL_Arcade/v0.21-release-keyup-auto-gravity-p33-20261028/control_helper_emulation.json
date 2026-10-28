@@ -1,0 +1,57 @@
+{
+  "result": "PASS",
+  "method": "Bounded instruction-level 8051 execution of actual v0.21 dispatcher, hold-repeat and gravity helper instructions; native movement and lock/spawn routines are modeled as counters/stubs.",
+  "main_key_event_hook": "0x0947 -> 0x9272",
+  "release_events": [
+    {
+      "held_key": "0x1E",
+      "event": "0x5E",
+      "clears_latch": true,
+      "clears_repeat_timer": true,
+      "forwards_to_0x0B36": false
+    },
+    {
+      "held_key": "0x1A",
+      "event": "0x5A",
+      "clears_latch": true,
+      "clears_repeat_timer": true,
+      "forwards_to_0x0B36": false
+    },
+    {
+      "held_key": "0x1F",
+      "event": "0x5F",
+      "clears_latch": true,
+      "clears_repeat_timer": true,
+      "forwards_to_0x0B36": false
+    }
+  ],
+  "unrelated_key_up": {
+    "held_key": "0x1E",
+    "event": "0x62",
+    "preserves_latch": true,
+    "forwards_to_0x0B36": true
+  },
+  "repeat": {
+    "left_right_initial_delay_ticks": 10,
+    "left_right_interval_ticks": 3,
+    "down_interval_ticks": 2
+  },
+  "gravity": {
+    "level_1_ticks": [
+      18,
+      36
+    ],
+    "level_18_ticks": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "scanner_unchanged": "0x1B70..0x1C17",
+  "hardware_test": false,
+  "limitations": [
+    "Does not emulate the entire scanner/IR path or physical remote key-up timing.",
+    "Native movement/lock/spawn is stubbed in this bounded helper test."
+  ]
+}
