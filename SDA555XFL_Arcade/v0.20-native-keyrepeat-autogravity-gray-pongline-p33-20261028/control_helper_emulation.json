@@ -1,0 +1,53 @@
+{
+  "result": "PASS",
+  "method": "Bounded instruction-level emulation of emitted v0.20 key dispatcher, repeat, gravity and soft-drop helpers; native movement routines and 0x1739 are stubbed as counters.",
+  "left_repeat_tick_calls_including_input_frame": [
+    11,
+    14,
+    17
+  ],
+  "right_repeat_tick_calls_including_input_frame": [
+    11,
+    14
+  ],
+  "down_repeat_tick_calls_including_input_frame": [
+    3,
+    5,
+    7
+  ],
+  "initial_delays": {
+    "horizontal": 10,
+    "soft_drop": 2
+  },
+  "repeat_intervals": {
+    "horizontal": 3,
+    "soft_drop": 2
+  },
+  "gravity": {
+    "level1_ticks": [
+      18,
+      36
+    ],
+    "level18_ticks": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "release_rearm": {
+    "left": "PASS",
+    "right": "PASS",
+    "down": "PASS"
+  },
+  "hooks": {
+    "frame": "0x096F -> 0x9260",
+    "keyboard": "0x0C3D -> 0x927C"
+  },
+  "hardware_test": false,
+  "limitations": [
+    "scanner/IR hardware not emulated",
+    "movement/body and lock-spawn are stubs in simulator",
+    "no TV test, no Flash write"
+  ]
+}
