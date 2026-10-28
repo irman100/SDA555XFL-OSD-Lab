@@ -1,0 +1,89 @@
+{
+  "version": "0.20-native-keyrepeat-autogravity-gray-pongline-p33",
+  "source": {
+    "filename": "sda555xfl_arcade_v0_12_P33_128k.bin",
+    "size_bytes": 131072,
+    "crc32": "39C1BD4B",
+    "sha256": "09f59d40672278b5ccd56c241f769ed6bf4c55b191a7e18727e63c2ac1065896"
+  },
+  "target": {
+    "filename": "sda555xfl_arcade_v0_20_native_keyrepeat_autogravity_gray_pongline_128k.bin",
+    "size_bytes": 131072,
+    "crc32": "CB2AB894",
+    "sha256": "b1e0fed4315c6a829731ce3e80786797470267c3aca1bb8f6b2d784f1ce5943e"
+  },
+  "hooks": {
+    "tetris_frame_tick": "0x096F -> 0x9260",
+    "key_dispatch": "0x0C3D -> 0x927C",
+    "initialize_repeat_state": "0x1528 -> 0x9272",
+    "pong_main_loop_0x0969_unchanged": true,
+    "pong_center_glyph_offset": "0x14E3"
+  },
+  "controls": {
+    "held_key_ram": "0x39",
+    "repeat_timer_ram": "0x3A",
+    "left_keydown": "0x1E",
+    "left_release": "0x5E",
+    "right_keydown": "0x1A",
+    "right_release": "0x5A",
+    "down_keydown": "0x1F",
+    "down_release": "0x5F",
+    "left_right_initial_delay_ticks": 10,
+    "left_right_repeat_ticks": 3,
+    "down_initial_delay_ticks": 2,
+    "down_repeat_ticks": 2,
+    "first_press_one_move": true,
+    "same_key_after_release_rearms": true
+  },
+  "gravity": {
+    "level1_move_ticks": [
+      18,
+      36
+    ],
+    "level18_move_ticks": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "routine": "0x1739"
+  },
+  "graphics": {
+    "background_face_index": 1,
+    "highlight_index": 3,
+    "shade_index": 10,
+    "clut_unchanged": true,
+    "pong_center_colon_replaced_by_period": true
+  },
+  "rgb": {
+    "red": 15,
+    "green": 15,
+    "blue": 15,
+    "brightness": 15,
+    "saturation": 15,
+    "rgb_gain_bits": "11",
+    "output_volts_peak_to_peak": 1.2
+  },
+  "validation": {
+    "build": "PASS",
+    "python_compile": "PASS",
+    "bounded_instruction_level_simulation": "PASS",
+    "geometry_cases": 28,
+    "gravity_levels": 18,
+    "changed_bytes_outside_allowed_ranges": 0,
+    "scanner_bytes_unchanged": true,
+    "physical_tv_tested": false,
+    "full_8051_runtime_emulation": false,
+    "flash_written": false
+  },
+  "artifacts": {
+    "full_release_zip_sha256": "6140b199e1e93e1d9c43e284285b35f331349d11d9c8797b9a7619d10ca234d8",
+    "firmware_only_zip_sha256": "8e67c00505abb8423030f57621db43088f4c6e9c667506690ef6b0cb60fed36a",
+    "source_bundle_sha256": "e73f871141c522a47709466c88aacbb39e09a5887e99ba8deca94ff9c854f958"
+  },
+  "limitations": [
+    "Movement primitives 0x16CE/0x16F1 and row move/lock/clear/spawn routine 0x1739 are stubbed in helper simulation.",
+    "Actual physical key scan and IR repeat timing have not been tested.",
+    "No physical television test. Flash not written."
+  ]
+}
