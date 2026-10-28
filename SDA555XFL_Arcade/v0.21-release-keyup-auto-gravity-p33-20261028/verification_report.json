@@ -1,0 +1,103 @@
+{
+  "version": "0.21-releasekeyup-autogravity-gray-pongline-p33",
+  "source": {
+    "filename": "sda555xfl_arcade_v0_12_P33_128k.bin",
+    "size_bytes": 131072,
+    "crc32": "39C1BD4B",
+    "sha256": "09f59d40672278b5ccd56c241f769ed6bf4c55b191a7e18727e63c2ac1065896"
+  },
+  "target": {
+    "filename": "sda555xfl_arcade_v0_21_releasekeyup_autogravity_gray_pongline_128k.bin",
+    "size_bytes": 131072,
+    "crc32": "5F511561",
+    "sha256": "e1968394c4afc2b1027947c258a0dc82f1494529bcd1eb65f11fc5a6cc57b435"
+  },
+  "patches": {
+    "main_keyboard_event_hook": {
+      "offset": "0x0947",
+      "original": "12 0B 36",
+      "patched": "12 92 72",
+      "target": "main_key_event_dispatch at 0x9272"
+    },
+    "tetris_main_loop_hook": {
+      "offset": "0x096F",
+      "target": "0x9260",
+      "pong_delay_0x0969_unchanged": true
+    },
+    "tetris_key_dispatch_hook": {
+      "offset": "0x0C3D",
+      "target": "0x92B3"
+    },
+    "release_handling": {
+      "intercept_before_mode_router": true,
+      "router": "0x0B36",
+      "held_key_ram": "0x39",
+      "repeat_timer_ram": "0x3A",
+      "left": {
+        "key_down": "0x1E",
+        "key_up": "0x5E"
+      },
+      "right": {
+        "key_down": "0x1A",
+        "key_up": "0x5A"
+      },
+      "down": {
+        "key_down": "0x1F",
+        "key_up": "0x5F"
+      },
+      "matching_release_clears_both_ram_cells": true,
+      "unmatched_events_forwarded": true
+    },
+    "keyboard_scanner": {
+      "offset_range": "0x1B70..0x1C17",
+      "changed": false
+    }
+  },
+  "controls": {
+    "left_right_initial_delay_ticks": 10,
+    "left_right_repeat_every_ticks": 3,
+    "down_repeat_every_ticks": 2,
+    "same_key_rearms_after_release": true
+  },
+  "gravity": {
+    "level_1_move_ticks": [
+      18,
+      36
+    ],
+    "level_18_move_ticks": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "verification": {
+    "python_compile": "PASS",
+    "build": "PASS",
+    "bounded_8051_helper_simulation": "PASS",
+    "release_left": "PASS",
+    "release_right": "PASS",
+    "release_down": "PASS",
+    "unmatched_release_passthrough": "PASS",
+    "repeat_after_release": "PASS",
+    "geometry_cases": 28,
+    "gravity_levels_checked": 18,
+    "unexpected_changed_bytes": 0,
+    "zip_integrity": "PASS",
+    "firmware_matches_in_archives": true,
+    "physical_tv_tested": false,
+    "full_8051_runtime_emulation": false,
+    "flash_written": false
+  },
+  "artifacts": {
+    "firmware_sha256": "e1968394c4afc2b1027947c258a0dc82f1494529bcd1eb65f11fc5a6cc57b435",
+    "release_zip_sha256": "de92893e80ab3487963c260c949df7daae824f7fb39f157751541fb3fdcf5cd9",
+    "firmware_only_zip_sha256": "79183d9aad449aedccf48a0831f26be60347ba6d902f0cfe5a567e417b86eb97",
+    "source_bundle_sha256": "1841bcc8c850b7b2f2d86fbe6d6c0f9e9029215b9672a1c2f9620bad9694c126"
+  },
+  "limitations": [
+    "Actual remote/IR release event has not been observed on hardware.",
+    "No full 8051 emulation or TV test.",
+    "Flash not written."
+  ]
+}
