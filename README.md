@@ -1,62 +1,108 @@
 # SDA555XFL OSD Lab
 
-**Reverse-engineering and standalone graphics experiments for the Micronas SDA555XFL TVText Pro processor from a Sokol A-2010 television.**
+**From reverse-engineering a television OSD processor to a standalone graphics and retro-gaming platform.**
 
-The project explores the processor's built-in 8051-compatible core, OSD/display generator, RGB and sync outputs, embedded 128 KiB Flash, and Flash Programming Interface (FPI). The goal is to turn a television text/OSD processor into a small standalone graphics and retro-game platform while preserving a reproducible, safety-conscious hardware workflow.
+A hardware/software research project based on the **Sokol A-2010 TV chassis** and the **Micronas SDA555XFL A14 (PSDIP-52)**. The work investigates its 8051-compatible core, reconstructs the OSD memory model, brings custom graphics to a CRT, develops an STM32F103 Flash Programming Interface (FPI), and builds standalone Pong and Tetris software.
 
-[Русская версия](README_RU.md) · [Project status](docs/PROJECT_STATUS_RU.md) · [Technical overview](docs/PROJECT_OVERVIEW_RU.md) · [Verification matrix](docs/VERIFICATION_MATRIX_RU.md)
+**Project progression:** PCB investigation → OSD reverse engineering → standalone video output → STM32F103 FPI programmer → menu and Pong → Tetris / Arcade.
 
-![SDA555XFL project gallery](assets/project-gallery.webp)
+[Русская версия](README_RU.md) · [Project status](docs/PROJECT_STATUS_RU.md) · [Technical overview](docs/PROJECT_OVERVIEW_RU.md)
 
-## What has been built and investigated
+## At a glance
 
-### 1. SDA555XFL reverse engineering
-- Identified the target as **SDA555XFL A14, PSDIP-52**, from the Sokol A-2010 TV chassis.
-- Recovered the factory OSD memory layout and pointer structures.
-- Established the 40 × 25 character display geometry: 1,000 cells, 3 bytes per cell, 3,000 bytes of display RAM.
-- Mapped pointer arrays, Global Display Word (GDW), programmable character areas (DRCS), and the colour lookup table (CLUT).
-- Reconstructed a 12 × 10 raster glyph for standalone OSD experiments.
+- Target: Micronas SDA555XFL A14, PSDIP-52.
+- Platform: Sokol A-2010 TV chassis.
+- CPU: 8051-compatible core.
+- Embedded Flash: 128 KiB.
+- OSD: 40 × 25 character positions, 3,000-byte Character Display RAM, DRCS, GDW and CLUT.
+- Video: dedicated H/V sync and RGB outputs.
+- FPI: custom STM32F103 interface and host-side utilities.
+- Demonstrations: standalone OSD, IR-controlled Pong, Tetris / Arcade.
 
-### 2. Video output and display experiments
-- Mapped PSDIP-52 pins: H-sync 19, V-sync 20, RGB 38/39/40, BLANK/COR 41.
-- Standalone bench work recorded approximately **15.625 kHz H-sync** and **50 Hz V-sync**.
-- A project photograph from 1 November 2026 shows custom Tetris OSD rendered on a CRT television. This is visual evidence of an image on the display, not a substitute for measuring RGB amplitude, sync margins, or long-term stability.
+## Project evolution
 
-### 3. FPI and STM32F103 programmer
-- Developed an STM32F103-based interface for the SDA555XFL Flash Programming Interface.
-- Investigated the JEDEC-style command path and non-destructive device identification. The programmer workflow reports device ID **BF D5**.
-- Built host-side tools for image validation, 128 KiB transfer planning, block CRC checks, and read-back verification.
-- The documented STM32F103 Engine v0.5 is **compile-locked for destructive operations by default** (ALLOW_DESTRUCTIVE_FPI=0). Its software simulation passed; this is not proof of a destructive write on the physical target.
-- The latest Universal FPI Flasher 0.1 screenshot shows a 131,072-byte image, CRC32 8AB10F0B, and RUN OK host/programmer status. The screenshot alone does not prove that a complete chip write and full read-back finished.
+### 1 — Board and target investigation
+Documented the Sokol A-2010 PCB, SDA555XFL package, accessible signal pads, FPI nodes and existing resistor network. Both PCB sides were photographed. Mechanical clearance/cutout work is documented using annotated source photographs; those overlays are working references, not manufacturer drawings.
 
-### 4. Standalone software and games
-- Built standalone OSD test firmware and instruction-level verification for the 8051-compatible core.
-- Created Pong with IR-remote input and a custom on-screen menu/test environment.
-- Developed the Tetris/Arcade line with a custom HUD, piece statistics, NEXT panel, board geometry, gravity and repeat-control experiments.
-- The latest documented Arcade image is **v0.22 for P3.3**, 128 KiB, CRC32 8AB10F0B, SHA-256 5d5c127dedc82796cb930943b10adb4c89128b8bcc29b107e7e98d8eeae476ad. Helper-level tests pass, but complete CPU/IR emulation and final physical control-timing validation remain open.
+### 2 — OSD reverse engineering
+Recovered the screen-memory model:
+- 40 columns × 25 rows = 1,000 character cells;
+- 3 bytes per Character Display Word;
+- 3,000 bytes of Character Display RAM at F448–FFFF;
+- pointer arrays, Global Display Word (GDW), CLUT and DRCS areas;
+- a custom 12 × 10 raster glyph for standalone OSD.
 
-## Repository map
+### 3 — Standalone graphics and sync
+Built standalone OSD test firmware and v5/v6 diagnostic variants. Standalone bench work recorded approximately 15.625 kHz H-sync and 50 Hz V-sync. A photograph dated 1 November 2026 shows the custom Tetris OSD on a CRT. A photograph demonstrates visible output, not analog waveform margins or long-term stability.
 
-| Path | Contents |
+### 4 — FPI migration to STM32F103
+The earlier Arduino Nano wiring proposal is obsolete and must not be used as the current connection guide. The current FPI interface is based on **STM32F103** and two real annotated PCB photographs: top side for signals on the existing resistor network; underside for control lines and D6/D7.
+
+See [STM32F103 FPI pin mapping](docs/STM32_FPI_CONNECTIONS_RU.md).
+
+The project includes non-destructive ID detection (workflow reports ID BF D5), image and CRC validation, 128 KiB transfer planning, an STM32F103 FPI Engine v0.5, safety interlocks and software simulation. Destructive operations are compile-locked by default in v0.5 (ALLOW_DESTRUCTIVE_FPI=0). A software simulation is not evidence of a physical Flash write.
+
+### 5 — Menu, Pong and Tetris
+The standalone display work evolved into a custom menu and IR-controlled Pong, followed by Tetris/Arcade with a custom HUD, piece statistics, NEXT panel, 10 × 20 board, levels, gravity and held-key repeat experiments.
+
+The latest documented Arcade build is v0.22 for P3.3:
+- 131,072 bytes;
+- CRC32 8AB10F0B;
+- SHA-256 5d5c127dedc82796cb930943b10adb4c89128b8bcc29b107e7e98d8eeae476ad.
+
+Helper-level tests pass; full 8051/IR runtime emulation and final timing validation with the actual remote remain open.
+
+## STM32F103 FPI mapping — current reference
+
+Use only the STM32F103 mapping in [the dedicated guide](docs/STM32_FPI_CONNECTIONS_RU.md) and its two new real annotated PCB photographs. The older Arduino Nano diagram is obsolete.
+
+Summary:
+- PA5…PA0 → D5…D0 through existing pull-up resistors R111/R112/R113/R114/R116/R115;
+- PB15 → FPI ENTER (P3.6);
+- PA8 → RESET#;
+- PB0/PB1/PB10/PB11/PB12/PB13/PB14 → WR#, RD#, DDIR, ASEL1, ASELO, ASEN#, FMOD;
+- PA6/PA7 → D6/D7.
+
+R117/R118 are not to be touched; the annotation identifies them as connector-only. Pin 51 is marked NC. Do not infer FPI purpose for other pads without verification.
+
+## Repository structure
+
+| Directory | Purpose |
 |---|---|
-| docs/history/ | Reverse-engineering notes, memory maps, sync experiments |
-| firmware/experimental/v5/ | Standalone OSD v5 images, source and manifests |
-| firmware/experimental/v6_no_shadow/ | Diagnostic no-shadow variants |
-| programmer/stm32f103_engine_v0_5/ | STM32F103 FPI firmware, host tools, safety audit and simulation |
-| docs/PROJECT_STATUS_RU.md | Current evidence and open questions |
-| docs/PROJECT_OVERVIEW_RU.md | Project architecture and technical summary |
-| docs/VERIFICATION_MATRIX_RU.md | Verified vs. not-yet-verified claims |
-| assets/project-gallery.webp | Selected project photographs and clearly labelled annotations |
+| docs/history/ | Reverse-engineering notes, memory maps and sync history |
+| docs/STM32_FPI_CONNECTIONS_RU.md | Current STM32F103 FPI wiring reference |
+| docs/PROJECT_PROGRESSION_RU.md | Project progression timeline |
+| docs/PROJECT_OVERVIEW_RU.md | Technical architecture |
+| docs/PROJECT_STATUS_RU.md | Current results and open work |
+| docs/VERIFICATION_MATRIX_RU.md | Evidence and verification matrix |
+| firmware/experimental/v5/ | Standalone OSD v5 |
+| firmware/experimental/v6_no_shadow/ | Diagnostic v6 variants |
+| programmer/stm32f103_engine_v0_5/ | STM32F103 firmware, host tools, safety audit and simulation |
 
-The v0.22 Arcade release notes and checksums are maintained in the [v0.22 release documentation branch](https://github.com/irman100/SDA555XFL-OSD-Lab/tree/release/arcade-v0.22-irwatchdog-autogravity-gray-pongline-p33-20261028/SDA555XFL_Arcade/v0.22-irwatchdog-autogravity-gray-pongline-p33-20261028). The standalone v0.22 BIN and ZIP are release artifacts from the development session; they are not included in this repository snapshot.
+## Evidence levels
 
-## Safety and scope
+The repository distinguishes:
+- **Measured** — physically measured with suitable equipment.
+- **Observed** — directly visible in a photograph, video or log.
+- **Simulated** — checked using software models or helper-level tests.
+- **Pending** — requires hardware verification.
 
-- The original factory 128 KiB ROM dump and recovery copies are intentionally kept outside the repository.
-- The television service manual and third-party documents are not redistributed here.
-- The v0.5 FPI engine defaults to compile-locked destructive operations. Do not remove the lock or issue erase/program commands without a separately reviewed target profile, a verified factory backup, and a complete read-back plan.
-- RGB amplitude and analog signal quality must be measured with suitable equipment; a software gain setting is not an analog measurement.
-- The board-clearance/cutout graphic in the gallery is an annotated planning reference, not a certified mechanical drawing.
-- This repository remains **Private**. No open-source licence is granted by the current contents.
+A CRT photograph is observed evidence. A helper test is simulated evidence. A software RGB DAC value of 1.2 Vpp is not an analog measurement at the actual load.
 
-See the [current status](docs/PROJECT_STATUS_RU.md) before attempting any hardware operation.
+## Open work
+
+1. Complete hardware validation of Tetris gravity, repeat, soft-drop and key-release behaviour with the actual IR remote.
+2. Separately verify complete Flash read-back for the current Arcade image, if a write is explicitly authorised and performed.
+3. Measure RGB, BLANK/COR and sync waveforms with an oscilloscope and correct termination.
+4. Confirm the mechanical cutout/clearance using physical dimensions, not photograph annotations alone.
+5. Add the two original STM32-annotated photographs to GitHub and refresh the visual deck exclusively with these real source photos.
+
+## Safety and publication
+
+- The original factory Flash dump and recovery copies are kept outside Git.
+- TV service manuals and third-party material are not redistributed.
+- Do not remove the FPI compile lock or run erase/program commands without a separately reviewed target profile, verified backup and complete read-back plan.
+- Colour annotations are not mechanical drawings.
+- The repository remains Private; no public licence is granted by the current contents.
+
+Start with the [project progression](docs/PROJECT_PROGRESSION_RU.md), then read the [STM32F103 FPI guide](docs/STM32_FPI_CONNECTIONS_RU.md) and the [technical overview](docs/PROJECT_OVERVIEW_RU.md).
