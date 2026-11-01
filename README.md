@@ -65,6 +65,14 @@ Summary:
 
 R117/R118 are not to be touched; the annotation identifies them as connector-only. Pin 51 is marked NC. Do not infer FPI purpose for other pads without verification.
 
+## 4.1 Project photo assets
+
+The publication source set has been identified: a real CRT photograph showing the Tetris OSD (1 Nov 2026), a real Universal FPI Flasher 0.1 screenshot, two author-provided STM32F103 FPI annotated PCB photographs, both sides of the Sokol A-2010 board, and an annotated preliminary cutout study.
+
+**No fully AI-generated photographs are used.** The current FPI controller is STM32F103. The underside annotated image still contains a legacy Nano label strip; that strip is not the current pin mapping. The STM32F103 table in the dedicated wiring guide is authoritative.
+
+Exact source filenames, intended use and cropping notes are recorded in the [photo asset manifest](docs/PUBLICATION_ASSET_MANIFEST_RU.md). The binary images have not yet been committed under GitHub `assets/publication/`, so this README intentionally avoids broken image links. The PPTX/PDF/ZIP must be rebuilt after the original photo assets are included.
+
 ## Repository structure
 
 | Directory | Purpose |
