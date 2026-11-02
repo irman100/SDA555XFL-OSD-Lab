@@ -5,6 +5,7 @@ on:
     branches:
       - docs/project-publication-stm32-20261101
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
     paths:
       - "README.md"
       - "SHA256SUMS"
