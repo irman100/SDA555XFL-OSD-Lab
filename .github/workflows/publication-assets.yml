@@ -1,0 +1,88 @@
+name: Publication assets
+
+on:
+  push:
+    branches:
+      - docs/project-publication-stm32-20261101
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - "README.md"
+      - "SHA256SUMS"
+      - "assets/publication/**"
+      - "SDA555XFL_OSD_Lab_Project_Presentation_12slides.pptx"
+      - "SDA555XFL_OSD_Lab_Project_Presentation_12slides.pdf"
+      - ".github/workflows/publication-assets.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify-publication:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify SHA-256 manifest
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+
+          failed = []
+          for line in Path("SHA256SUMS").read_text(encoding="utf-8").splitlines():
+              if not line.strip():
+                  continue
+              expected, name = line.split("  ", 1)
+              path = Path(name)
+              if not path.is_file():
+                  print(f"MISSING  {name}")
+                  failed.append(name)
+                  continue
+              actual = hashlib.sha256(path.read_bytes()).hexdigest()
+              if actual == expected:
+                  print(f"PASS     {name}")
+              else:
+                  print(f"MISMATCH {name} expected={expected} actual={actual}")
+                  failed.append(name)
+          if failed:
+              raise SystemExit(f"SHA-256 verification failed for {len(failed)} item(s)") 
+          print("PASS: every SHA256SUMS entry matches the checked-out file bytes")
+          PY
+
+      - name: Verify gallery, PowerPoint and PDF
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import zipfile
+
+          expected = [
+              "01-tetris-crt.jpg",
+              "02-universal-fpi-flasher-01.png",
+              "03-stm32-fpi-front-points.png",
+              "04-stm32-fpi-back-points-nano-original.png",
+              "05-sokol-a2010-components.jpg",
+              "06-sokol-a2010-solder-side.jpg",
+              "07-sokol-a2010-cutout-study.png",
+          ]
+          readme = Path("README.md").read_text(encoding="utf-8")
+          for name in expected:
+              path = Path("assets/publication") / name
+              assert path.is_file() and path.stat().st_size > 0, f"Missing/empty asset: {path}"
+              assert f"assets/publication/{name}" in readme, f"README does not reference {name}"
+
+          pptx = Path("SDA555XFL_OSD_Lab_Project_Presentation_12slides.pptx")
+          with zipfile.ZipFile(pptx) as zf:
+              slides = [n for n in zf.namelist()
+                        if re.fullmatch(r"ppt/slides/slide[0-9]+\.xml", n)]
+              assert len(slides) == 12, f"Expected 12 PPTX slides, found {len(slides)}"
+
+          pdf = Path("SDA555XFL_OSD_Lab_Project_Presentation_12slides.pdf").read_bytes()
+          assert pdf.startswith(b"%PDF-"), "PDF signature is invalid"
+          pages = re.findall(rb"/Type\s*/Page\b", pdf)
+          assert len(pages) == 12, f"Expected 12 PDF pages, found {len(pages)}"
+
+          print("PASS: seven original assets, README references, 12-slide PPTX, 12-page PDF")
+          PY
