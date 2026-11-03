@@ -11,6 +11,18 @@
 
 SDA555XFL OSD Lab — аппаратно-программный исследовательский проект на базе телевизионного шасси **Sokol A-2010** и микросхемы **Micronas SDA555XFL A14 (PSDIP-52)**. Цель проекта — изучить встроенный OSD-процессор, формировать собственную графику, разработать интерфейс программирования Flash на STM32F103 и превратить телевизионную микросхему в небольшую автономную ретро-платформу.
 
+### Видеообзор проекта
+
+<p align="center">
+  <a href="https://irman100.github.io/SDA555XFL-OSD-Lab/" title="Открыть встроенный видеоплеер SDA555XFL OSD Lab">
+    <img src="https://img.youtube.com/vi/6ouXOMl5X6E/hqdefault.jpg" alt="Видеодемонстрация проекта SDA555XFL OSD Lab — нажмите, чтобы открыть встроенный плеер" width="720">
+  </a>
+  <br>
+  <strong><a href="https://irman100.github.io/SDA555XFL-OSD-Lab/">▶ Смотреть видео во встроенном плеере проекта</a></strong>
+</p>
+
+Видео открывается в плеере на отдельной странице GitHub Pages проекта и начинается с отметки 00:26. README GitHub не поддерживает YouTube iframe напрямую, поэтому для воспроизведения без перехода на YouTube подготовлена отдельная страница просмотра. Чтобы опубликовать её, один раз включите GitHub Pages: **Settings → Pages → Deploy from a branch → Branch: main → Folder: /docs → Save**.
+
 ### Эволюция проекта
 
 1. **Исследование платы:** документирование обеих сторон Sokol A-2010, штатных резисторных цепей, доступных площадок и механических ограничений.
@@ -90,11 +102,13 @@ SDA555XFL OSD Lab — аппаратно-программный исследов
 - Разрушительные FPI-операции остаются заблокированными в стандартной конфигурации STM32F103 Engine v0.5.
 - Не выполнять erase/program без отдельного разрешения, проверенной резервной копии и плана полного read-back.
 - Разметка зоны выреза является исследовательской фотографией, а не размерным производственным чертежом.
-- Репозиторий остаётся Private, пока владелец отдельно не изменит видимость.
+- Репозиторий опубликован в открытом режиме Public; исходники и история проекта доступны посетителям GitHub.
 
 ## English
 
 SDA555XFL OSD Lab is a hardware/software research project built around the **Sokol A-2010 TV chassis** and the **Micronas SDA555XFL A14 (PSDIP-52)**. The goal is to understand the built-in OSD processor, generate custom graphics, develop an STM32F103-based Flash Programming Interface, and turn a television IC into a small standalone retro-gaming platform.
+
+**Project video:** [open the embedded project player](https://irman100.github.io/SDA555XFL-OSD-Lab/). Playback starts at 00:26 on the project's GitHub Pages site.
 
 ### Project progression
 
@@ -146,3 +160,4 @@ Factory Flash dumps and recovery copies are excluded. Destructive FPI operations
 - `docs/PROJECT_PRESENTATION_RU.md` — структура 12-слайдовой презентации.
 - `docs/PUBLICATION_RELEASE_CHECKLIST_RU.md` — выпускной чек-лист.
 - `docs/STM32_FPI_CONNECTIONS_RU.md` — актуальные точки подключения STM32F103.
+- `docs/index.html` — страница проекта со встроенным видеоплеером (GitHub Pages).
