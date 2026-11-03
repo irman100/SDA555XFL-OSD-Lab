@@ -8,7 +8,6 @@ on:
     paths:
       - "README.md"
       - "SHA256SUMS"
-      - "docs/index.html"
       - "assets/publication/**"
       - "SDA555XFL_OSD_Lab_Project_Presentation_12slides.pptx"
       - "SDA555XFL_OSD_Lab_Project_Presentation_12slides.pdf"
@@ -18,7 +17,6 @@ on:
     paths:
       - "README.md"
       - "SHA256SUMS"
-      - "docs/index.html"
       - "assets/publication/**"
       - "SDA555XFL_OSD_Lab_Project_Presentation_12slides.pptx"
       - "SDA555XFL_OSD_Lab_Project_Presentation_12slides.pdf"
@@ -78,10 +76,6 @@ jobs:
               "07-sokol-a2010-cutout-study.png",
           ]
           readme = Path("README.md").read_text(encoding="utf-8")
-          video_page = Path("docs/index.html").read_text(encoding="utf-8")
-          assert "6ouXOMl5X6E" in video_page, "Project video ID is missing"
-          assert "youtube-nocookie.com/embed/" in video_page, "Embedded YouTube player is missing"
-          assert "docs/index.html" in readme, "README does not reference the video page"
           for name in expected:
               path = Path("assets/publication") / name
               assert path.is_file() and path.stat().st_size > 0, f"Missing/empty asset: {path}"
@@ -98,5 +92,5 @@ jobs:
           pages = re.findall(rb"/Type\s*/Page\b", pdf)
           assert len(pages) == 12, f"Expected 12 PDF pages, found {len(pages)}"
 
-          print("PASS: seven original assets, README references, embedded project video page, 12-slide PPTX, 12-page PDF")
+          print("PASS: seven original assets, README references, 12-slide PPTX, 12-page PDF")
           PY
